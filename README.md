@@ -4,7 +4,7 @@ Briefly describe your app here.
 
 ## Authors
 
-FirstName LastName ([your_email@berkeley.edu](mailto:your_email@berkeley.edu))
+Dalton Boll ([dboll@berkeley.edu](mailto:dboll@berkeley.edu))
 
 ## Demo Video
 
