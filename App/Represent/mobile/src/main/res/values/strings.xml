@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Represent</string>
+    <string name="welcome_text">Welcome to Represent!\nPlease enter your location to get started:</string>
+    <string name="zip_code">ZIP code:</string>
+    <string name="zip_code_hint">e.g. 94704</string>
+    <string name="current_location">Use my current location:</string>
+    <string name="or">OR</string>
+    <string name="find_representatives">Find Representatives!</string>
+
+</resources>
