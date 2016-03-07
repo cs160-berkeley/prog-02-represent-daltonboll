@@ -17,7 +17,7 @@
         android:layout_below="@+id/candidateImage"
         android:layout_toEndOf="@+id/imageView"
         android:layout_marginTop="5dp"
-        android:autoLink="web" />
+        android:autoLink="email" />
 
     <TextView
         android:layout_width="wrap_content"

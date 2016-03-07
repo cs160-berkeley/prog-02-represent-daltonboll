@@ -46,17 +46,16 @@ public class CandidateArrayAdapter extends ArrayAdapter<Candidate> {
         Candidate currentCandidate = candidates[index];
 
         String imageTitle = currentCandidate.imageTitle;
+        image.setImageResource(context.getResources().getIdentifier(imageTitle, "drawable", context.getPackageName()));
 
         nameView.setText(currentCandidate.name);
         partyView.setText(currentCandidate.position + " | " + currentCandidate.party);
-        //emailView.setText(Html.fromHtml("<a href=\"mailto:" + currentCandidate.email + "\">" + currentCandidate.email + "</a>"));
-        //emailView.setMovementMethod(LinkMovementMethod.getInstance());
         emailView.setText(currentCandidate.email);
         websiteView.setText(currentCandidate.website);
+
         twitterHandleView.setText(Html.fromHtml("<a href=\"http://twitter.com/" + currentCandidate.twitterHandle + "\">" + currentCandidate.twitterHandle + "</a>"));
         twitterHandleView.setMovementMethod(LinkMovementMethod.getInstance());
         latestTweetView.setText("-- \"" + currentCandidate.latestTweet + "\"");
-        image.setImageResource(context.getResources().getIdentifier(imageTitle, "drawable", context.getPackageName()));
 
         return convertView;
     }
