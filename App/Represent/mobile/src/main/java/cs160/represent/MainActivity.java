@@ -24,12 +24,16 @@ public class MainActivity extends AppCompatActivity {
         if (locationSwitch != null) {
             locationSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    EditText userZipCodeEditText = (EditText) findViewById(R.id.zipCodeInput);
+
                     if (isChecked) {
                         //do stuff when Switch is ON
                         System.out.println("The switch is on!");
+                        userZipCodeEditText.setEnabled(false); // grey out the zip code entry
                     } else {
                         //do stuff when Switch if OFF
                         System.out.println("The switch is off!");
+                        userZipCodeEditText.setEnabled(true); // re-enable the zip code entry
                     }
                 }
             });
@@ -41,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "Find Representatives! button was clicked");
 
         int zipCode = 94704;
-        Candidate[] candidates = getDummyRepresentatives();
         Intent intent = new Intent(this, CandidateListActivity.class);
 
         // Check to see if the user enabled their location
@@ -51,6 +54,10 @@ public class MainActivity extends AppCompatActivity {
             Log.d(TAG, "Using the user's location to find representatives");
 
             // TODO: use Google's location services to find the user's location
+
+            // Start the CandidateListActivity view
+            intent.putExtra("zipCode", zipCode); // Pass the zipcode to the view
+            this.startActivity(intent);
         } else {
             // use their zip code to find representatives
             Log.d(TAG, "Using the input zip code to find representatives");
@@ -110,67 +117,6 @@ public class MainActivity extends AppCompatActivity {
 
         // show it
         alertDialog.show();
-    }
-
-    /* TODO: Implement this with API calls. */
-    Candidate[] getRepresentativesByZipCode() {
-        Candidate[] candidates = new Candidate[3];
-        return candidates;
-    }
-
-    /* TODO: Implement this with API calls. */
-    Candidate[] getRepresentativesByLocation() {
-        Candidate[] candidates = new Candidate[3];
-        return candidates;
-    }
-
-    Candidate[] getDummyRepresentatives() {
-        Candidate[] candidates = new Candidate[3];
-
-        Candidate trump = new Candidate("Donald Trump");
-        Candidate clinton = new Candidate("Hillary Clinton");
-        Candidate sanders = new Candidate("Bernie Sanders");
-
-        trump.setPositionToRepresentative();
-        trump.setPartyToRepublican();
-        trump.setEndOfTerm("11/2016");
-        trump.setEmailAddress("djtrump@gmail.com");
-        trump.setWebsite("donaldjtrump.com");
-        trump.setTwitterHandle("@realDonaldTrump");
-        trump.addCommittee("Budget Committee");
-        trump.addCommittee("Agriculture Committee");
-        trump.addSponsoredBill("Education Begins At Home Act (1/16/09");
-        trump.addSponsoredBill("Ready To Learn Act (1/14/09");
-        trump.addSponsoredBill("Prevention First Act (1/06/09");
-        candidates[0] = trump;
-
-        clinton.setPositionToSenator();
-        clinton.setPartyToDemocrat();
-        clinton.setEndOfTerm("06/2016");
-        clinton.setEmailAddress("hillaryc@gmail.com");
-        clinton.setWebsite("hillaryclinton.com");
-        clinton.setTwitterHandle("@HillaryClinton");
-        clinton.addCommittee("Economy Committee");
-        clinton.addCommittee("Infrastructure Committee");
-        clinton.addSponsoredBill("Infrastructure First Act (1/12/09");
-        clinton.addSponsoredBill("Ground Up Now Act (4/13/10");
-        clinton.addSponsoredBill("Transportation for Tomorrow Act (12/10/11)");
-        candidates[1] = clinton;
-
-        sanders.setPositionToSenator();
-        sanders.setPartyToIndependent();
-        sanders.setEndOfTerm("07/2016");
-        sanders.setEmailAddress("bernie@gmail.com");
-        sanders.setWebsite("berniesanders.com");
-        sanders.setTwitterHandle("@BernieSanders");
-        sanders.addCommittee("Rally Committee");
-        sanders.addCommittee("Business Committee");
-        sanders.addSponsoredBill("Every Student Succeeds Act (12/15/16)");
-        sanders.addSponsoredBill("Assault Weapons Ban (4/13/2016");
-        sanders.addSponsoredBill("Adoptive Family Relief Act (2/11/2015");
-        candidates[2] = sanders;
-
-        return candidates;
     }
 
 }

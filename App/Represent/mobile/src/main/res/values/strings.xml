@@ -8,4 +8,6 @@
     <string name="find_representatives">Find Representatives!</string>
 
     <string name="candidate_list_title">Candidates for Berkeley</string>
+    <string name="candidate_name">Name</string>
+    <string name="candidate_party">Party</string>
 </resources>
