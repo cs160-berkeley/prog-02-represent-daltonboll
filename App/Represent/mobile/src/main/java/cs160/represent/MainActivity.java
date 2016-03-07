@@ -2,18 +2,80 @@ package cs160.represent;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.content.Intent;
+import android.widget.*;
+import android.util.Log;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Switch locationSwitch = (Switch) findViewById(R.id.useCurrentLocationSwitch);
+
+        // Set up a listener for the switch when the user toggle's location on and off
+        if (locationSwitch != null) {
+            locationSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked) {
+                        //do stuff when Switch is ON
+                        System.out.println("The switch is on!");
+                    } else {
+                        //do stuff when Switch if OFF
+                        System.out.println("The switch is off!");
+                    }
+                }
+            });
+        }
     }
 
-    void findRepresentatives() {
-        int zipCode = 94704;
+    /* Called when the user clicks the "Find Representatives!" button. */
+    public void loadRepresentatives(View view) {
+        int zipCode;
         Candidate[] candidates = getDummyRepresentatives();
+        Intent intent = new Intent(this, CandidateListActivity.class);
+
+        // Check to see if the user enabled their location
+        Switch userCurrentLocation = (Switch) findViewById(R.id.useCurrentLocationSwitch);
+        if (userCurrentLocation.isChecked()) {
+            // use their GPS-based location to find representatives
+            Log.d(TAG, "Using the user's location to find representatives");
+            GPSTracker gps = new GPSTracker(this);
+
+            if(gps.canGetLocation()) {
+                // The user has GPS turned on in settings
+                double longitude = gps.getLongitude();
+                double latitude = gps.getLatitude();
+            } else {
+                // Ask the user to enable GPS in settings
+                gps.showSettingsAlert();
+            }
+
+            // Stop continuous GPS updates
+            gps.stopUsingGPS();
+
+        } else {
+            // use their zip code to find representatives
+            Log.d(TAG, "Using the input zip code to find representatives");
+            EditText userZipCodeEditText = (EditText) findViewById(R.id.zipCodeInput);
+        }
+    }
+
+    /* TODO: Implement this with API calls. */
+    Candidate[] getRepresentativesByZipCode() {
+        Candidate[] candidates = new Candidate[3];
+        return candidates;
+    }
+
+    /* TODO: Implement this with API calls. */
+    Candidate[] getRepresentativesByLocation() {
+        Candidate[] candidates = new Candidate[3];
+        return candidates;
     }
 
     Candidate[] getDummyRepresentatives() {
