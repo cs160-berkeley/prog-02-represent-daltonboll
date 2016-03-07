@@ -101,7 +101,7 @@ public class GPSTracker extends Service implements LocationListener {
             }
 
         } catch (SecurityException e) {
-            Log.d("GPSTracker", "We have a SecurityException");
+            Log.d("GPSTracker", "We have a GPS SecurityException");
             e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
@@ -116,7 +116,12 @@ public class GPSTracker extends Service implements LocationListener {
      * */
     public void stopUsingGPS(){
         if(locationManager != null){
-            locationManager.removeUpdates(GPSTracker.this);
+            try {
+                locationManager.removeUpdates(GPSTracker.this);
+            } catch (SecurityException e) {
+                Log.d("GPSTracker", "We have a GPS SecurityException");
+                e.printStackTrace();
+            }
         }
     }
 

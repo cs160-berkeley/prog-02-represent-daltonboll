@@ -36,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
 
     /* Called when the user clicks the "Find Representatives!" button. */
     public void loadRepresentatives(View view) {
+        Log.d(TAG, "Find Representatives! button was clicked");
+
         int zipCode;
         Candidate[] candidates = getDummyRepresentatives();
         Intent intent = new Intent(this, CandidateListActivity.class);
@@ -51,13 +53,15 @@ public class MainActivity extends AppCompatActivity {
                 // The user has GPS turned on in settings
                 double longitude = gps.getLongitude();
                 double latitude = gps.getLatitude();
+                Log.d(TAG, "GPS found: Longitude= " + longitude + " and Latitude= " + latitude);
             } else {
                 // Ask the user to enable GPS in settings
+                Log.d(TAG, "Asking the user to enable GPS in settings");
                 gps.showSettingsAlert();
             }
 
             // Stop continuous GPS updates
-            gps.stopUsingGPS();
+            //gps.stopUsingGPS();
 
         } else {
             // use their zip code to find representatives
