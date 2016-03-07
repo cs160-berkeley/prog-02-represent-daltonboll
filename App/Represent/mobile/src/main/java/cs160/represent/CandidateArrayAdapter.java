@@ -34,7 +34,7 @@ public class CandidateArrayAdapter extends ArrayAdapter<Candidate> {
         }
 
         TextView nameView = (TextView) convertView.findViewById(R.id.candidateName);
-        TextView partyView = (TextView) convertView.findViewById(R.id.candidateParty);
+        TextView partyView = (TextView) convertView.findViewById(R.id.candidatePartyInfo);
         TextView emailView = (TextView) convertView.findViewById(R.id.candidateEmail);
         TextView websiteView = (TextView) convertView.findViewById(R.id.candidateWebsite);
         TextView twitterHandleView = (TextView) convertView.findViewById(R.id.candidateTwitterHandle);
@@ -45,13 +45,12 @@ public class CandidateArrayAdapter extends ArrayAdapter<Candidate> {
 
         String imageTitle = currentCandidate.imageTitle;
 
-        nameView.setText(currentCandidate.position + " " + currentCandidate.name);
-        partyView.setText(currentCandidate.party);
-        partyView.setTextColor(currentCandidate.getPartyColor());
+        nameView.setText(currentCandidate.name);
+        partyView.setText(currentCandidate.position + " | " + currentCandidate.party);
         emailView.setText(currentCandidate.email);
         websiteView.setText(currentCandidate.website);
         twitterHandleView.setText(currentCandidate.twitterHandle);
-        latestTweetView.setText(currentCandidate.latestTweet);
+        latestTweetView.setText("-- \"" + currentCandidate.latestTweet + "\"");
         image.setImageResource(context.getResources().getIdentifier(imageTitle, "drawable", context.getPackageName()));
 
         return convertView;

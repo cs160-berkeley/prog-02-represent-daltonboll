@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.content.Context;
@@ -26,7 +27,7 @@ public class CandidateListActivity extends ListActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // setContentView(R.layout.activity_candidate_list);
+        setContentView(R.layout.activity_candidate_list);
 
         // Get a list of candidates for this area
         // TODO: make sure to use external APIs to grab this data
@@ -34,6 +35,9 @@ public class CandidateListActivity extends ListActivity {
         int zipCode = intent.getIntExtra("zipCode", 94704);
         Log.d(TAG, "Received zip code: " + zipCode);
         candidates = getDummyRepresentatives();
+
+        TextView listTitle = (TextView) findViewById(R.id.candidateListTitle);
+        listTitle.setText("Candidates for " + zipCode);
 
         // Initialize the ListView logic
         setListAdapter(new CandidateArrayAdapter(this, candidates));
@@ -77,7 +81,7 @@ public class CandidateListActivity extends ListActivity {
         trump.addSponsoredBill("Education Begins At Home Act (1/16/09");
         trump.addSponsoredBill("Ready To Learn Act (1/14/09");
         trump.addSponsoredBill("Prevention First Act (1/06/09");
-        trump.imageTitle = "donald_trump";
+        trump.imageTitle = "donald_round";
         candidates[0] = trump;
 
         clinton.setPositionToSenator();
@@ -92,7 +96,7 @@ public class CandidateListActivity extends ListActivity {
         clinton.addSponsoredBill("Infrastructure First Act (1/12/09");
         clinton.addSponsoredBill("Ground Up Now Act (4/13/10");
         clinton.addSponsoredBill("Transportation for Tomorrow Act (12/10/11)");
-        clinton.imageTitle = "hillary_clinton";
+        clinton.imageTitle = "hillary_round";
         candidates[1] = clinton;
 
         sanders.setPositionToSenator();
@@ -107,7 +111,7 @@ public class CandidateListActivity extends ListActivity {
         sanders.addSponsoredBill("Every Student Succeeds Act (12/15/16)");
         sanders.addSponsoredBill("Assault Weapons Ban (4/13/2016");
         sanders.addSponsoredBill("Adoptive Family Relief Act (2/11/2015");
-        sanders.imageTitle = "bernie_sanders";
+        sanders.imageTitle = "bernie_round";
         candidates[2] = sanders;
 
         return candidates;
