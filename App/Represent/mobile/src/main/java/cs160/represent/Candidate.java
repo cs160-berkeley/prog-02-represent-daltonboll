@@ -1,6 +1,10 @@
 package cs160.represent;
+import android.graphics.Color;
+
+import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Map;
 
 /**
  * Created by Dalton on 3/6/16.
@@ -23,11 +27,22 @@ public class Candidate {
     //Tweet latestTweet;
     String latestTweet;
 
+    // For access to party colors
+    Map<String, Integer> partyToColor = new HashMap<String, Integer>();
+
     public Candidate(String name) {
         this.name = name;
+        initializeHashMaps();
     }
 
     public Candidate() {
+        initializeHashMaps();
+    }
+
+    private void initializeHashMaps() {
+        partyToColor.put("Democrat", Color.parseColor("#FF556DBE"));
+        partyToColor.put("Republican", Color.parseColor("#c26363"));
+        partyToColor.put("Independent", Color.parseColor("#FF5EB97F"));
     }
 
     public void setName(String name) {
@@ -96,6 +111,11 @@ public class Candidate {
 
     public List<String> getSponsoredBills() {
         return this.bills;
+    }
+
+    public int getPartyColor() {
+        int color = this.partyToColor.get(this.party);
+        return color;
     }
 
 }

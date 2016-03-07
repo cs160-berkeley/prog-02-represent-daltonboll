@@ -45,8 +45,9 @@ public class CandidateArrayAdapter extends ArrayAdapter<Candidate> {
 
         String imageTitle = currentCandidate.imageTitle;
 
-        nameView.setText(currentCandidate.name);
+        nameView.setText(currentCandidate.position + " " + currentCandidate.name);
         partyView.setText(currentCandidate.party);
+        partyView.setTextColor(currentCandidate.getPartyColor());
         emailView.setText(currentCandidate.email);
         websiteView.setText(currentCandidate.website);
         twitterHandleView.setText(currentCandidate.twitterHandle);

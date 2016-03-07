@@ -8,35 +8,54 @@
         android:layout_height="wrap_content"
         android:text="Bernie Sanders"
         android:id="@+id/candidateName"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:textColor="#7e7a7a"
+        android:textStyle="bold"
+        android:textSize="24dp"
+        android:paddingTop="5dp"
+        android:layout_alignTop="@+id/candidateImage"
+        android:layout_alignStart="@+id/moreInfoButton"
+        android:paddingRight="10dp"
+        android:paddingLeft="20dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Republican Party"
         android:id="@+id/candidateParty"
-        android:layout_marginTop="17dp"
+        android:layout_alignStart="@+id/candidateName"
         android:layout_below="@+id/candidateName"
-        android:layout_centerHorizontal="true" />
+        android:paddingTop="5dp"
+        android:textSize="18sp"
+        android:paddingLeft="20dp"
+        android:paddingRight="10dp"
+        android:textColor="#c26363"
+        android:textStyle="bold" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="email@mail.com"
         android:id="@+id/candidateEmail"
-        android:layout_marginTop="18dp"
-        android:layout_below="@+id/candidateParty"
-        android:layout_centerHorizontal="true" />
+        android:layout_marginTop="25dp"
+        android:paddingBottom="5dp"
+        android:paddingRight="10dp"
+        android:textSize="16sp"
+        android:layout_below="@+id/candidateImage"
+        android:layout_toEndOf="@+id/imageView"
+        android:layout_marginLeft="5dp"
+        android:textColor="#0645ad" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="mywebsite.com"
         android:id="@+id/candidateWebsite"
+        android:paddingBottom="5dp"
+        android:paddingRight="10dp"
+        android:textSize="16sp"
+        android:textColor="#0645ad"
         android:layout_below="@+id/candidateEmail"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="17dp" />
+        android:layout_alignStart="@+id/candidateEmail" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -44,8 +63,11 @@
         android:text="\@myTwitterName"
         android:id="@+id/candidateTwitterHandle"
         android:layout_below="@+id/candidateWebsite"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="18dp" />
+        android:layout_alignStart="@+id/candidateWebsite"
+        android:paddingBottom="5dp"
+        android:paddingRight="10dp"
+        android:textSize="16sp"
+        android:textColor="#0645ad" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -53,8 +75,11 @@
         android:text="'This is my latest Tweet!'"
         android:id="@+id/candidateLatestTweet"
         android:layout_below="@+id/candidateTwitterHandle"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="17dp" />
+        android:layout_alignStart="@+id/candidateTwitterHandle"
+        android:paddingBottom="15dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="10dp"
+        android:textSize="15sp" />
 
     <Button
         android:layout_width="wrap_content"
@@ -63,14 +88,40 @@
         android:id="@+id/moreInfoButton"
         android:layout_below="@+id/candidateLatestTweet"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="26dp" />
+        android:layout_marginBottom="20dp" />
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
         android:id="@+id/candidateImage"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="39dp"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignBottom="@+id/candidateEmail"
-        android:layout_toStartOf="@+id/candidateTwitterHandle" />
+        android:layout_toStartOf="@+id/candidateName"
+        android:src="@drawable/hillary_clinton" />
+
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:id="@+id/imageView"
+        android:src="@drawable/gmail"
+        android:layout_alignTop="@+id/candidateEmail"
+        android:layout_alignStart="@+id/candidateImage" />
+
+    <ImageView
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:id="@+id/imageView2"
+        android:src="@drawable/site"
+        android:layout_below="@+id/candidateEmail"
+        android:layout_alignStart="@+id/imageView" />
+
+    <ImageView
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:id="@+id/imageView3"
+        android:src="@drawable/twitter"
+        android:layout_alignTop="@+id/candidateTwitterHandle"
+        android:layout_alignStart="@+id/imageView2" />
 </RelativeLayout>
