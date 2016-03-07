@@ -32,7 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/zipCodeInput"
-        android:text="@string/zip_code_hint"
+        android:hint="@string/zip_code_hint"
         android:layout_alignBottom="@+id/zipCodeText"
         android:layout_alignEnd="@+id/welcomeText"
         android:inputType="number" />

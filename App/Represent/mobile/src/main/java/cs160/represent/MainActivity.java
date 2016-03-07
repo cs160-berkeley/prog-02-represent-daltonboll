@@ -1,11 +1,13 @@
 package cs160.represent;
 
+import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.content.Intent;
 import android.widget.*;
 import android.util.Log;
+import android.app.AlertDialog;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     public void loadRepresentatives(View view) {
         Log.d(TAG, "Find Representatives! button was clicked");
 
-        int zipCode;
+        int zipCode = 94704;
         Candidate[] candidates = getDummyRepresentatives();
         Intent intent = new Intent(this, CandidateListActivity.class);
 
@@ -47,27 +49,67 @@ public class MainActivity extends AppCompatActivity {
         if (userCurrentLocation.isChecked()) {
             // use their GPS-based location to find representatives
             Log.d(TAG, "Using the user's location to find representatives");
-            GPSTracker gps = new GPSTracker(this);
 
-            if(gps.canGetLocation()) {
-                // The user has GPS turned on in settings
-                double longitude = gps.getLongitude();
-                double latitude = gps.getLatitude();
-                Log.d(TAG, "GPS found: Longitude= " + longitude + " and Latitude= " + latitude);
-            } else {
-                // Ask the user to enable GPS in settings
-                Log.d(TAG, "Asking the user to enable GPS in settings");
-                gps.showSettingsAlert();
-            }
-
-            // Stop continuous GPS updates
-            //gps.stopUsingGPS();
-
+            // TODO: use Google's location services to find the user's location
         } else {
             // use their zip code to find representatives
             Log.d(TAG, "Using the input zip code to find representatives");
             EditText userZipCodeEditText = (EditText) findViewById(R.id.zipCodeInput);
+
+            try {
+                int inputZipCode = Integer.parseInt(userZipCodeEditText.getText().toString());
+                Log.d(TAG, "The user input zip code is: " + inputZipCode);
+
+                if (!isValidZipCode(inputZipCode)) {
+                    Log.d(TAG, "The user hasn't entered a valid zip code");
+                    displayDialog("Please enter a valid 5-character Zip Code (e.g. 94704)");
+                } else {
+                    // The user has entered a valid zip code
+                    zipCode = inputZipCode;
+
+                    // Start the CandidateListActivity view
+                    intent.putExtra("zipCode", zipCode); // Pass the zipcode to the view
+                    this.startActivity(intent);
+                }
+            } catch (NumberFormatException e) {
+                Log.d(TAG, "The user hasn't entered a zip code yet");
+                displayDialog("Please enter a valid Zip Code (e.g. 94704)");
+            }
         }
+    }
+
+    boolean isValidZipCode(int zipCode) {
+        int ZIP_CODE_LENGTH = 5;
+        String zipCodeString = String.valueOf(zipCode);
+
+        return zipCodeString.length() == ZIP_CODE_LENGTH;
+    }
+
+    /*
+     * Credit: http://www.mkyong.com/android/android-alert-dialog-example/
+     */
+    void displayDialog(String message) {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+
+        // set title
+        alertDialogBuilder.setTitle("Wait a minute!");
+
+        // set dialog message
+        alertDialogBuilder
+                .setMessage(message)
+                .setCancelable(false)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // if this button is clicked, close the dialog
+                        dialog.cancel();
+                    }
+                });
+
+        // create alert dialog
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+        // show it
+        alertDialog.show();
     }
 
     /* TODO: Implement this with API calls. */
