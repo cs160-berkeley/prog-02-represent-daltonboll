@@ -16,7 +16,8 @@
         android:paddingTop="5dp"
         android:layout_below="@+id/candidateImage"
         android:layout_toEndOf="@+id/imageView"
-        android:layout_marginTop="5dp" />
+        android:layout_marginTop="5dp"
+        android:autoLink="web" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -29,7 +30,8 @@
         android:textColor="#51b7e3"
         android:paddingTop="5dp"
         android:layout_alignTop="@+id/imageView2"
-        android:layout_alignStart="@+id/candidateEmail" />
+        android:layout_alignStart="@+id/candidateEmail"
+        android:autoLink="web" />
 
     <TextView
         android:layout_width="wrap_content"

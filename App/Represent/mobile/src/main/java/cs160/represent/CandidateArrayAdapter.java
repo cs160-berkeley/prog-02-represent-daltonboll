@@ -1,6 +1,8 @@
 package cs160.represent;
 
 import android.content.Context;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,9 +49,12 @@ public class CandidateArrayAdapter extends ArrayAdapter<Candidate> {
 
         nameView.setText(currentCandidate.name);
         partyView.setText(currentCandidate.position + " | " + currentCandidate.party);
+        //emailView.setText(Html.fromHtml("<a href=\"mailto:" + currentCandidate.email + "\">" + currentCandidate.email + "</a>"));
+        //emailView.setMovementMethod(LinkMovementMethod.getInstance());
         emailView.setText(currentCandidate.email);
         websiteView.setText(currentCandidate.website);
-        twitterHandleView.setText(currentCandidate.twitterHandle);
+        twitterHandleView.setText(Html.fromHtml("<a href=\"http://twitter.com/" + currentCandidate.twitterHandle + "\">" + currentCandidate.twitterHandle + "</a>"));
+        twitterHandleView.setMovementMethod(LinkMovementMethod.getInstance());
         latestTweetView.setText("-- \"" + currentCandidate.latestTweet + "\"");
         image.setImageResource(context.getResources().getIdentifier(imageTitle, "drawable", context.getPackageName()));
 

@@ -11,4 +11,6 @@
     <string name="candidate_name">Name</string>
     <string name="candidate_party">Party</string>
     <string name="more_info">More info</string>
+
+    <string name="google_app_id">40078356328</string>
 </resources>
