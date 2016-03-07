@@ -3,10 +3,12 @@ package cs160.represent;
 import android.content.Context;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,6 +18,7 @@ import android.widget.TextView;
  *   and: https://github.com/codepath/android_guides/wiki/Using-an-ArrayAdapter-with-ListView
  */
 public class CandidateArrayAdapter extends ArrayAdapter<Candidate> {
+    private static final String TAG = "CandidateArrayAdapter";
     private final Context context;
     private final Candidate[] candidates;
 
@@ -57,6 +60,21 @@ public class CandidateArrayAdapter extends ArrayAdapter<Candidate> {
         twitterHandleView.setMovementMethod(LinkMovementMethod.getInstance());
         latestTweetView.setText("-- \"" + currentCandidate.latestTweet + "\"");
 
+        // Add an onClickListener for the "More Info" button
+        addButtonListener(currentCandidate, convertView);
+
         return convertView;
+    }
+
+    // Add an onClickListener for each candidate "More Info" button
+    public void addButtonListener(final Candidate currentCandidate, View convertView) {
+        Button button = (Button) convertView.findViewById(R.id.moreInfoButton);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                Log.d(TAG, "More info button clicked for " + currentCandidate.name);
+            }
+        });
     }
 }
