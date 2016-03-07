@@ -1,6 +1,7 @@
 package cs160.represent;
 import android.graphics.Color;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
@@ -9,7 +10,7 @@ import java.util.Map;
 /**
  * Created by Dalton on 3/6/16.
  */
-public class Candidate {
+public class Candidate implements Serializable {
 
     String name;
     String twitterHandle;

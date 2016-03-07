@@ -1,6 +1,7 @@
 package cs160.represent;
 
 import android.content.Context;
+import android.content.Intent;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
@@ -67,13 +68,16 @@ public class CandidateArrayAdapter extends ArrayAdapter<Candidate> {
     }
 
     // Add an onClickListener for each candidate "More Info" button
-    public void addButtonListener(final Candidate currentCandidate, View convertView) {
+    public void addButtonListener(final Candidate currentCandidate, final View convertView) {
         Button button = (Button) convertView.findViewById(R.id.moreInfoButton);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
                 Log.d(TAG, "More info button clicked for " + currentCandidate.name);
+                Intent intent = new Intent(convertView.getContext(), CandidateInfoActivity.class);
+                intent.putExtra("candidate", currentCandidate); // Pass the zipcode to the view
+                convertView.getContext().startActivity(intent);
             }
         });
     }
