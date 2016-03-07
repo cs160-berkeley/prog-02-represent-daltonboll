@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 // Credit for list view: http://www.mkyong.com/android/android-listview-example/
+//   and: https://github.com/codepath/android_guides/wiki/Using-an-ArrayAdapter-with-ListView
 public class CandidateListActivity extends ListActivity {
 
     private static final String TAG = "CandidateListActivity";
@@ -70,11 +71,13 @@ public class CandidateListActivity extends ListActivity {
         trump.setEmailAddress("djtrump@gmail.com");
         trump.setWebsite("donaldjtrump.com");
         trump.setTwitterHandle("@realDonaldTrump");
+        trump.setLatestTweet("Tonight is gonna be huuuuge!");
         trump.addCommittee("Budget Committee");
         trump.addCommittee("Agriculture Committee");
         trump.addSponsoredBill("Education Begins At Home Act (1/16/09");
         trump.addSponsoredBill("Ready To Learn Act (1/14/09");
         trump.addSponsoredBill("Prevention First Act (1/06/09");
+        trump.imageTitle = "donald_trump";
         candidates[0] = trump;
 
         clinton.setPositionToSenator();
@@ -83,11 +86,13 @@ public class CandidateListActivity extends ListActivity {
         clinton.setEmailAddress("hillaryc@gmail.com");
         clinton.setWebsite("hillaryclinton.com");
         clinton.setTwitterHandle("@HillaryClinton");
+        clinton.setLatestTweet("Let's get some votes tonight!");
         clinton.addCommittee("Economy Committee");
         clinton.addCommittee("Infrastructure Committee");
         clinton.addSponsoredBill("Infrastructure First Act (1/12/09");
         clinton.addSponsoredBill("Ground Up Now Act (4/13/10");
         clinton.addSponsoredBill("Transportation for Tomorrow Act (12/10/11)");
+        clinton.imageTitle = "hillary_clinton";
         candidates[1] = clinton;
 
         sanders.setPositionToSenator();
@@ -96,11 +101,13 @@ public class CandidateListActivity extends ListActivity {
         sanders.setEmailAddress("bernie@gmail.com");
         sanders.setWebsite("berniesanders.com");
         sanders.setTwitterHandle("@BernieSanders");
+        sanders.setLatestTweet("We are gonna rock it tonight!");
         sanders.addCommittee("Rally Committee");
         sanders.addCommittee("Business Committee");
         sanders.addSponsoredBill("Every Student Succeeds Act (12/15/16)");
         sanders.addSponsoredBill("Assault Weapons Ban (4/13/2016");
         sanders.addSponsoredBill("Adoptive Family Relief Act (2/11/2015");
+        sanders.imageTitle = "bernie_sanders";
         candidates[2] = sanders;
 
         return candidates;

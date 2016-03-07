@@ -14,11 +14,14 @@ public class Candidate {
     String party;
     String position;
     String endOfTerm;
+    String imageTitle;
 
     List<String> committees;
     List<String> bills;
 
-    Tweet latestTweet;
+    // TODO: Use the Tweet class
+    //Tweet latestTweet;
+    String latestTweet;
 
     public Candidate(String name) {
         this.name = name;
@@ -65,6 +68,10 @@ public class Candidate {
 
     public void setPositionToRepresentative() {
         this.position = "Representative";
+    }
+
+    public void setLatestTweet(String tweetText) {
+        this.latestTweet = tweetText;
     }
 
     public void addCommittee(String committeeName) {

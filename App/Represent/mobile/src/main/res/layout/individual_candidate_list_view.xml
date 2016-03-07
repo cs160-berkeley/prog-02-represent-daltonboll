@@ -14,9 +14,63 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Republican"
+        android:text="Republican Party"
         android:id="@+id/candidateParty"
+        android:layout_marginTop="17dp"
         android:layout_below="@+id/candidateName"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="email@mail.com"
+        android:id="@+id/candidateEmail"
+        android:layout_marginTop="18dp"
+        android:layout_below="@+id/candidateParty"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="mywebsite.com"
+        android:id="@+id/candidateWebsite"
+        android:layout_below="@+id/candidateEmail"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="62dp" />
+        android:layout_marginTop="17dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="\@myTwitterName"
+        android:id="@+id/candidateTwitterHandle"
+        android:layout_below="@+id/candidateWebsite"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="'This is my latest Tweet!'"
+        android:id="@+id/candidateLatestTweet"
+        android:layout_below="@+id/candidateTwitterHandle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="17dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/more_info"
+        android:id="@+id/moreInfoButton"
+        android:layout_below="@+id/candidateLatestTweet"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/candidateImage"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignBottom="@+id/candidateEmail"
+        android:layout_toStartOf="@+id/candidateTwitterHandle" />
 </RelativeLayout>
