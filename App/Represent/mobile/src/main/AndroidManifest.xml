@@ -22,7 +22,7 @@
         <activity
             android:name=".CandidateListActivity"
             android:theme="@style/ListTheme" />
-        <activity android:name=".CandidateInfoActivity"></activity>
+        <activity android:name=".CandidateInfoActivity" />
     </application>
 
 </manifest>
