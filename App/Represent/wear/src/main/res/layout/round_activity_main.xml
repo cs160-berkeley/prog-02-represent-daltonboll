@@ -4,14 +4,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="cs160.wear.MainActivity"
-    tools:deviceIds="wear_round">
+    tools:deviceIds="wear_round"
+    android:background="#273b56">
 
     <TextView
-        android:id="@+id/text"
+        android:id="@+id/welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_round"
+        android:text="@string/welcome"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:textIsSelectable="false"
+        android:textSize="20dp"
+        android:textColor="#ffffff"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="77dp" />
+        android:src="@drawable/logo"
+        android:layout_marginTop="15dp" />
 </RelativeLayout>
